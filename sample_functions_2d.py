@@ -19,7 +19,7 @@ def ackley(x):
     exp_1_term = np.exp(-b * np.sqrt(0.5 * x0 ** 2 + 0.5 * x1 ** 2))
     exp_2_term = np.exp(0.5 * np.cos(c * x0) + 0.5 * np.cos(c * x1))
 
-    val = 0.05 * (-a * exp_1_term - exp_2_term + a * np.exp(1))
+    val = 0.05 * (-a * exp_1_term - exp_2_term + a + np.exp(1))
 
     return val 
 
@@ -142,9 +142,9 @@ def schaffer_n4(x):
     x1 = 200 * x[1] - 100
 
     norm = np.sqrt(x0 ** 2 + x1 ** 2)
-    cos_term = np.cos(np.sin(np.abs(x0 ** 2 - x1 ** 2)))
+    cos_term = np.cos(np.sin(np.abs(x0 ** 2 - x1 ** 2))) ** 2
 
-    val = 0.5 + (cos_term - 0.5) / (np.abs(1 + 0.001 * norm ** 2) ** 2)
+    val = 0.5 + (cos_term - 0.5) / (np.abs(1 + 0.001 * norm ** 2) ** 2) - 0.292579
 
     return val 
 
@@ -185,7 +185,7 @@ def sphere(x):
     x0 = 10 * x[0] - 5
     x1 = 10 * x[1] - 5
 
-    val = 0.1 * (x0 ** 2 + x1 ** 2)
+    val = 0.05 * (x0 ** 2 + x1 ** 2)
 
     return val 
 
@@ -194,7 +194,7 @@ def power_sum(x):
     x0 = 4 * x[0] - 2
     x1 = 4 * x[1] - 2
 
-    val = 0.5 * (x0 ** 2 + x1 ** 3)
+    val = 0.25 * (x0 ** 2 + np.abs(x1) ** 3)
 
     return val 
 
@@ -203,7 +203,7 @@ def square_sum(x):
     x0 = 10 * x[0] - 5
     x1 = 10 * x[1] - 5
 
-    val = 0.1 * (x0 ** 2 + 2 * x1 ** 2)
+    val = 0.05 * (x0 ** 2 + 2 * x1 ** 2)
 
     return val 
 
@@ -212,7 +212,7 @@ def trid(x):
     x0 = 8 * x[0] - 4
     x1 = 8 * x[1] - 4
 
-    val = 0.1 * (2 + (x0 - 1) ** 2 + (x1 - 1) ** 2 - x0 * x1)
+    val = 0.05 * (2 + (x0 - 1) ** 2 + (x1 - 1) ** 2 - x0 * x1)
 
     return val 
 
@@ -221,7 +221,7 @@ def matyas(x):
     x0 = 10 * x[0] - 5
     x1 = 10 * x[1] - 5
 
-    val = 0.05 * (0.26 * (x0 - 1) ** 2 + 0.26 * (x1 - 1) ** 2 - 0.48 * x0 * x1)
+    val = 0.05 * (0.26 * x0 ** 2 + 0.26 * x1 ** 2 - 0.48 * x0 * x1)
 
     return val 
 
@@ -239,7 +239,7 @@ def zakharov(x):
     x0 = 10 * x[0] - 5
     x1 = 10 * x[1] - 5
 
-    val = 0.01 * (x0 ** 2 + x1 ** 2 + (0.5 * x0 + x1) ** 2 + (0.5 * x0 + x1) ** 4)
+    val = 0.001 * (x0 ** 2 + x1 ** 2 + (0.5 * x0 + x1) ** 2 + (0.5 * x0 + x1) ** 4)
 
     return val 
 
@@ -257,7 +257,7 @@ def dixon_price(x):
     x0 = 10 * x[0] - 5
     x1 = 10 * x[1] - 5
 
-    val = 0.01 * ((x0 - 1) ** 2 + 2 * (2 * x1 ** 2 - x0) ** 2)
+    val = 0.0005 * ((x0 - 1) ** 2 + 2 * (2 * x1 ** 2 - x0) ** 2)
 
     return val 
 
@@ -315,7 +315,7 @@ def beale(x):
     x0 = 8 * x[0] - 4
     x1 = 8 * x[1] - 4
 
-    val = 0.001 * ((1.5 - x0 + x0 * x1) ** 2 + (2.25 - x0 + x0 * x1 ** 2) ** 2 + (2.625 - x0 + x0 * x1 ** 3) ** 2)
+    val = 0.00005 * ((1.5 - x0 + x0 * x1) ** 2 + (2.25 - x0 + x0 * x1 ** 2) ** 2 + (2.625 - x0 + x0 * x1 ** 3) ** 2)
 
     return val 
 
